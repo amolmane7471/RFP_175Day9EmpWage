@@ -5,17 +5,20 @@ public class EmpWage {
 		static final int IS_PARTTIME = 2;
 		static final int EMP_RATE_PER_HOUR = 20;
 		static final int NUM_WORKING_DAYS = 20;
-	
+		static final int WORKING_HRS_IN_MONTH = 100;
+		
 		public static void main(String[] args) {
 
 		System.out.println("Welcome to Employee Wage Computation Pgm");
-		 int empHrs, empWage,totalEmpWage=0;
+		 int empHrs,totalEmpWage,totalEmpHrs=0,totalWorkingDays=0;
 		 /*
 		  * UC5 : calculate employee wages for month
-		  */
-	    for (int day=1;day<=NUM_WORKING_DAYS;day++)
-	    {
-	    	/*
+		  * UC6 : calculate wages till a condition of total working hrs or days is reached for month
+		  */ 
+		  while(totalEmpHrs<=WORKING_HRS_IN_MONTH && totalWorkingDays<NUM_WORKING_DAYS)
+		    {	
+		    	totalWorkingDays++;
+		   	/*
 			 * UC1 : for employee attendance
 			 */
 
@@ -44,10 +47,10 @@ public class EmpWage {
 		/*
 		 * UC2 : for daily employee wages
 		 */
-		empWage=empHrs*EMP_RATE_PER_HOUR;
-		totalEmpWage+=empWage;
-		System.out.println("Emp Wage for day"+day+": " +empWage);
+		 totalEmpHrs +=empHrs;
+		 System.out.println(" Day:"+totalWorkingDays  +  " Total EmpHours:"+totalEmpHrs);
 	    }
+	    totalEmpWage=totalEmpHrs*EMP_RATE_PER_HOUR;
 	    System.out.println("Total Emp Wage Is:"+totalEmpWage);
 	}
 
