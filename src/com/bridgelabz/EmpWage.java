@@ -1,22 +1,21 @@
 package com.bridgelabz;
 
 public class EmpWage {
-		static final int IS_FULLTIME = 1;
-		static final int IS_PARTTIME = 2;
-		static final int EMP_RATE_PER_HOUR = 20;
-		static final int NUM_WORKING_DAYS = 20;
-		static final int WORKING_HRS_IN_MONTH = 100;
+		 final int IS_FULLTIME = 1;
+		 final int IS_PARTTIME = 2;
+	
 		/*
 		 * UC7 : refactor the code to write class method to compute emp wage
+		 * UC8 : compute employee wages for multiple company
 		 */
-		public void computeEmpWage()
+		public void computeEmpWage(String company ,int emp_RATE_PER_HOUR,int num_WORKING_DAYS,int working_HRS_IN_MONTH)
 		{
-			 int empHrs,totalEmpWage,totalEmpHrs=0,totalWorkingDays=0;
+			 int empHrs , totalEmpWage , totalEmpHrs = 0 , totalWorkingDays = 0;
 			 /*
 			  * UC5 : calculate employee wages for month
 			  * UC6 : calculate wages till a condition of total working hrs or days is reached for month
 			  */ 
-			  while(totalEmpHrs<=WORKING_HRS_IN_MONTH && totalWorkingDays<NUM_WORKING_DAYS)
+			  while(totalEmpHrs <= working_HRS_IN_MONTH && totalWorkingDays < num_WORKING_DAYS)
 			    {	
 			    	totalWorkingDays++;
 			   	/*
@@ -38,7 +37,7 @@ public class EmpWage {
 			 * UC3 : for part time employee and wages
 			 */
 			case IS_PARTTIME:
-						empHrs=4;
+						empHrs = 4;
 						System.out.println("Emp is part time present");
 						break;
 			default :
@@ -48,17 +47,21 @@ public class EmpWage {
 			/*
 			 * UC2 : for daily employee wages
 			 */
-			 totalEmpHrs +=empHrs;
-			 System.out.println(" Day:"+totalWorkingDays  +  " Total EmpHours:"+totalEmpHrs);
+			 totalEmpHrs += empHrs;
+			 System.out.println(" Day: "+totalWorkingDays  + " Total EmpHours: "+totalEmpHrs);
 		    }
-		    totalEmpWage=totalEmpHrs*EMP_RATE_PER_HOUR;
-		    System.out.println("Total Emp Wage Is:"+totalEmpWage);
-	
+		    totalEmpWage = totalEmpHrs * emp_RATE_PER_HOUR;
+		    System.out.println("Total Emp Wage for company "+company+" is "+totalEmpWage);
+		    System.out.println("***************");
 		}
 		public static void main(String[] args) {
-			EmpWage e = new EmpWage();
+			EmpWage dmart = new EmpWage();
+			EmpWage google = new EmpWage();
+			EmpWage microsoft = new EmpWage();
 			System.out.println("Welcome to Employee Wage Computation Pgm");
-			e.computeEmpWage();
+			dmart.computeEmpWage("DMart",10,8,10);
+			google.computeEmpWage("google",20,10,20);
+			microsoft.computeEmpWage("Microsoft", 20,15,30);
 		}
 
 }
